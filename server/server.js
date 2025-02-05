@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors"
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -8,6 +9,7 @@ const port = 3000;
 const API_URL = "https://api.currentsapi.services/v1";
 
 app.use(express.json());
+app.use(cors());
 
 const getLatestNews = async (category, country) => {
   const apiKey = process.env.API_KEY;

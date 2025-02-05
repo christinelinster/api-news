@@ -27,13 +27,14 @@ function App() {
   ];
 
   const countries = {
-    Australia: "AS",
-    Canada: "CA",
-    China: "CN",
+    "Canada": "CA",
+    "China": "CN",
     "South Korea": "SK",
-    Taiwan: "TW",
-    "United State": "US",
+    "Taiwan": "TW",
+    "United States": "US",
   };
+
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000"
 
   async function fetchLatestNews(category, country) {
     try {
