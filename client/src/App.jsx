@@ -1,4 +1,4 @@
-import "./App.css";
+import "../src/styles/App.css";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -34,16 +34,15 @@ function App() {
     "United States": "US",
   };
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000"
-
   async function fetchLatestNews(category, country) {
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000"
     try {
-      const response = await fetch(`/api/latest-news?category=${category}&country=${country}`);
+      const response = await fetch(`${API_URL}/api/latest-news?category=${category}&country=${country}`);
       if (!response.ok) {
         throw new Error("Failed to fetch latest news");
       }
       const data = await response.json();
-      setLatestNews(data);
+      setLatestNews(data.news)
     } catch (err) {
       console.error("Error fetching latest news:", err);
     }
